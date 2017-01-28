@@ -1,0 +1,2 @@
+defmodule SimpleMarkdownExtensionHighlightJS do
+end
