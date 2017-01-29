@@ -1,4 +1,39 @@
 defmodule SimpleMarkdownExtensionHighlightJS do
+    @moduledoc """
+      Generates HTML renderer implementations for all supported languages
+      that were provided in the config.
+
+      Configuration options are as follows:
+
+      * `:source` - Set the source (path or URL) to the highlight.js
+      file that will be used. It will read the languages used within
+      it.
+      * `:include` - Include any additional languages the extension
+      should support.
+      * `:exclude` - Exclude any languages from the extension.
+
+      ###Example
+
+        config :simple_markdown_extension_highlight_js,
+            source: Path.join(__DIR__, "highlight.pack.js"),
+            include: ["c"],
+            exclude: ["erlang"]
+
+
+      ###Note
+
+      This extension assumes the default HTML rendering behaviour
+      for `SimpleMarkdown.Attribute.PreformattedCode` has not been
+      overriden.
+
+      If it has then the new implementation must pass the call to
+      `SimpleMarkdown.Attribute.PreformattedCode.*`. Where `*` is
+      replaced with the supported language.
+
+      Otherwise if it has not overriden the implementation, then
+      no extra work is needed.
+    """
+
     source = Application.get_env(:simple_markdown_extension_highlight_js, :source)
 
     code = if source != nil do
