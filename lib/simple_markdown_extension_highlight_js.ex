@@ -22,11 +22,9 @@ defmodule SimpleMarkdownExtensionHighlightJS do
     |> Enum.filter(&(!Enum.any?(excludes, fn lang -> &1 == lang end)))
 
     for lang <- languages do
-        quote do
-            defimpl SimpleMarkdown.Renderer.HTML, for: unquote(String.to_atom("Elixir.SimpleMarkdown.Attribute.PreformattedCode.#{String.capitalize(lang)}")) do
-                def render(%{ input: input }), do: SimpleMarkdownExtensionHighlightJS.render(input, unquote(lang))
-            end
-        end |> Code.eval_quoted
+        defimpl SimpleMarkdown.Renderer.HTML, for: String.to_atom("Elixir.SimpleMarkdown.Attribute.PreformattedCode.#{String.capitalize(lang)}") do
+            def render(%{ input: input }), do: SimpleMarkdownExtensionHighlightJS.render(input, unquote(lang))
+        end
     end
 
     @doc false
