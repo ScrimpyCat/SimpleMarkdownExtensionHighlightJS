@@ -37,3 +37,7 @@ if Mix.env == :test do
         include: ["c"],
         exclude: ["erlang"]
 end
+
+if Mix.env == :dev do
+    config :ex_doc, :markdown_processor, SimpleMarkdown
+end
