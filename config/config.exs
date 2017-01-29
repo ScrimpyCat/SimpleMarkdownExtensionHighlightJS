@@ -30,3 +30,10 @@ use Mix.Config
 #     import_config "#{Mix.env}.exs"
 
 import_config "simple_markdown_rules.exs"
+
+if Mix.env == :test do
+    config :simple_markdown_extension_highlight_js,
+        source: Path.join(__DIR__, "highlight.pack.js"),
+        include: ["c"],
+        exclude: ["erlang"]
+end
