@@ -19,6 +19,7 @@ defmodule SimpleMarkdownExtensionHighlightJS do
             include: ["c"],
             exclude: ["erlang"]
 
+      Finally implement the renderers using `impl_renderers/0`.
 
       ###Note
 
@@ -34,6 +35,9 @@ defmodule SimpleMarkdownExtensionHighlightJS do
       no extra work is needed.
     """
 
+    @doc """
+      Implement the HTML renderers for the provided code snippets
+    """
     defmacro impl_renderers() do
         source = Application.get_env(:simple_markdown_extension_highlight_js, :source)
 
