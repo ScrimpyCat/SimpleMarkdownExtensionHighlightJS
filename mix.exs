@@ -18,7 +18,7 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
     #
     # Type `mix help compile.app` for more information
     def application do
-        [applications: [:logger, :simple_markdown]]
+        [applications: [:logger, :simple_markdown, :html_entities]]
     end
 
     # Dependencies can be Hex packages:
@@ -33,6 +33,8 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
     defp deps do
         [
             { :simple_markdown, "~> 0.2.1" },
+            { :html_entities, "~> 0.3" },
+            { :httpoison, "~> 0.9" },
             { :ex_doc, "~> 0.13", only: :dev }
         ]
     end
