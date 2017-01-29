@@ -1,11 +1,13 @@
 defmodule SimpleMarkdownExtensionHighlightJSTest do
     use ExUnit.Case
+    require SimpleMarkdownExtensionHighlightJS
+
+    SimpleMarkdownExtensionHighlightJS.impl_renderers
 
     test "Protocols implementations are created" do
-        imps = Protocol.extract_impls(SimpleMarkdown.Renderer.HTML, [:code.lib_dir(:simple_markdown_extension_highlight_js, :ebin)])
-        assert true == Enum.any?(imps, &(&1 == SimpleMarkdown.Attribute.PreformattedCode.C))
-        assert true == Enum.any?(imps, &(&1 == SimpleMarkdown.Attribute.PreformattedCode.Elixir))
-        assert false == Enum.any?(imps, &(&1 == SimpleMarkdown.Attribute.PreformattedCode.Erlang))
+        assert :ok = Protocol.assert_impl!(SimpleMarkdown.Renderer.HTML, SimpleMarkdown.Attribute.PreformattedCode.C)
+        assert :ok = Protocol.assert_impl!(SimpleMarkdown.Renderer.HTML, SimpleMarkdown.Attribute.PreformattedCode.Elixir)
+        assert_raise ArgumentError, fn -> Protocol.assert_impl!(SimpleMarkdown.Renderer.HTML, SimpleMarkdown.Attribute.PreformattedCode.Erlang) end
     end
 
     test "Renders correctly" do
