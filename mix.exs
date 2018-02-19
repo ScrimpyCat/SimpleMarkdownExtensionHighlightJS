@@ -6,12 +6,11 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
             app: :simple_markdown_extension_highlight_js,
             description: "An extension for SimpleMarkdown to add a renderers for code snippets to add highlighting when using highlight.js.",
             version: "0.0.1",
-            elixir: "~> 1.3",
-            build_embedded: Mix.env == :prod,
+            elixir: "~> 1.5",
             start_permanent: Mix.env == :prod,
             consolidate_protocols: Mix.env != :test,
-            deps: deps,
-            package: package
+            deps: deps(),
+            package: package()
         ]
     end
 
@@ -19,7 +18,7 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
     #
     # Type `mix help compile.app` for more information
     def application do
-        [applications: [:logger, :simple_markdown, :html_entities]]
+        [extra_applications: [:logger]]
     end
 
     # Dependencies can be Hex packages:
@@ -33,7 +32,7 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
     # Type `mix help deps` for more examples and options
     defp deps do
         [
-            { :simple_markdown, "~> 0.2.1" },
+            { :simple_markdown, "~> 0.3" },
             { :html_entities, "~> 0.3" },
             { :httpoison, "~> 0.9" },
             { :ex_doc, "~> 0.13", only: :dev }
