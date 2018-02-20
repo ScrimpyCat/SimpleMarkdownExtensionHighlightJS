@@ -1,8 +1,7 @@
 defmodule SimpleMarkdownExtensionHighlightJSTest do
     use ExUnit.Case
-    require SimpleMarkdownExtensionHighlightJS
 
-    SimpleMarkdownExtensionHighlightJS.impl_renderers
+    SimpleMarkdownExtensionHighlightJS.setup
 
     test "Protocols implementations are created" do
         assert :ok = Protocol.assert_impl!(SimpleMarkdown.Renderer.HTML, SimpleMarkdown.Attribute.PreformattedCode.C)

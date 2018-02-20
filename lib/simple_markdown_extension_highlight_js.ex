@@ -19,7 +19,8 @@ defmodule SimpleMarkdownExtensionHighlightJS do
             include: ["c"],
             exclude: ["erlang"]
 
-      Finally implement the renderers using `impl_renderers/0`.
+      Finally implement the renderers using `impl_renderers/0` or
+      by calling `setup/0`.
 
       ###Note
 
@@ -72,4 +73,25 @@ defmodule SimpleMarkdownExtensionHighlightJS do
 
     @doc false
     def render(input, lang), do: "<pre><code class=\"#{lang}\">#{SimpleMarkdown.Renderer.HTML.render(input) |> HtmlEntities.encode}</code></pre>"
+
+    @doc """
+      Setup the HTML renderers.
+
+      This is an alternative to to using `impl_renderers/0`.
+
+      This function can be repeatedly called, but will only setup the renderers
+      once. Subsequent calls are effectively no-ops.
+    """
+    @spec setup() :: :ok
+    def setup() do
+        if !Code.ensure_compiled?(SimpleMarkdownExtensionHighlightJS.Renderer) do
+            Module.create(SimpleMarkdownExtensionHighlightJS.Renderer, quote do
+                require SimpleMarkdownExtensionHighlightJS
+
+                SimpleMarkdownExtensionHighlightJS.impl_renderers
+            end, Macro.Env.location(__ENV__))
+        end
+
+        :ok
+    end
 end
