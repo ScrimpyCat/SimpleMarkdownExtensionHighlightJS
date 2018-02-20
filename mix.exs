@@ -32,10 +32,10 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
     # Type `mix help deps` for more examples and options
     defp deps do
         [
-            { :simple_markdown, "~> 0.3" },
-            { :html_entities, "~> 0.3" },
-            { :httpoison, "~> 0.9" },
-            { :ex_doc, "~> 0.13", only: :dev }
+            { :simple_markdown, "~> 0.3", runtime: false },
+            { :html_entities, "~> 0.3", runtime: false },
+            { :httpoison, "~> 0.9", runtime: false },
+            { :ex_doc, "~> 0.18", only: :dev, runtime: false }
         ]
     end
 
