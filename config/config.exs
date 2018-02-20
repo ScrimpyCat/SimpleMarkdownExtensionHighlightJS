@@ -39,5 +39,5 @@ if Mix.env == :test do
 end
 
 if Mix.env == :dev do
-    config :ex_doc, :markdown_processor, SimpleMarkdown
+    config :ex_doc, :markdown_processor, ExDocSimpleMarkdown
 end

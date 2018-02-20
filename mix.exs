@@ -35,7 +35,8 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
             { :simple_markdown, "~> 0.3", runtime: false },
             { :html_entities, "~> 0.3", runtime: false },
             { :httpoison, "~> 0.9", runtime: false },
-            { :ex_doc, "~> 0.18", only: :dev, runtime: false }
+            { :ex_doc, "~> 0.18", only: :dev, runtime: false },
+            { :ex_doc_simple_markdown, "~> 0.2.1", only: :dev, runtime: false }
         ]
     end
 
