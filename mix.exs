@@ -5,7 +5,7 @@ defmodule SimpleMarkdownExtensionHighlightJS.Mixfile do
         [
             app: :simple_markdown_extension_highlight_js,
             description: "An extension for SimpleMarkdown to add a renderers for code snippets to add highlighting when using highlight.js.",
-            version: "0.0.1",
+            version: "0.1.0",
             elixir: "~> 1.5",
             start_permanent: Mix.env == :prod,
             consolidate_protocols: Mix.env != :test,

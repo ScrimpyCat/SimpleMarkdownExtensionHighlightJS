@@ -10,6 +10,6 @@ def applications do
 end
 
 def deps do
-    [{ :simple_markdown_extension_highlight_js, "~> 0.0.1" }]
+    [{ :simple_markdown_extension_highlight_js, "~> 0.1.0" }]
 end
 ```
